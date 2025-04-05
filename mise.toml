@@ -30,3 +30,21 @@ depends_post = ["data:unzip"]
 [tasks."data:unzip"]
 run = "unzip csv.zip"
 sources = ["csv.zip"]
+
+
+[tasks."data:load"]
+description = "Loads CSV data into the database"
+run = """
+#!/usr/bin/env bash
+
+for file in csv/*.csv
+do
+    filename=$(basename -- "$file")
+    dataset="${filename%.*}"
+    echo "Loading $dataset"
+    cat "$file" | duckdb raw.duckdb \
+        -c "create table $dataset as select * from read_csv('/dev/stdin', all_varchar = true);"
+done
+"""
+sources = ["csv/*.csv"]
+outputs = ["raw.duckdb"]
