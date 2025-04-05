@@ -21,3 +21,12 @@ run = "mise run dbt --version"
 description = "Wrapper command for dbt. All args are passed to dbt"
 run = "{{vars.uv_run}} dbt"
 
+[tasks."data:get"]
+description = "Downloads example data"
+run = "wget https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_csv_apr2020.zip -O csv.zip"
+outputs = ["csv.zip"]
+depends_post = ["data:unzip"]
+
+[tasks."data:unzip"]
+run = "unzip csv.zip"
+sources = ["csv.zip"]

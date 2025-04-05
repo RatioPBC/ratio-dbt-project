@@ -1,4 +1,6 @@
+/csv
 /logs
 /ratio_dbt_project
+csv.zip
 .user.yml
 dev.duckdb
