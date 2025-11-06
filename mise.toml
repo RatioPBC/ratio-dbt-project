@@ -24,13 +24,15 @@ description = "Loads CSV data into the database"
 run = """
 #!/usr/bin/env bash
 
+duckdb dev.duckdb -c "create schema if not exists raw;"
+
 for file in csv/*.csv
 do
     filename=$(basename -- "$file")
     dataset="${filename%.*}"
     echo "Loading $dataset"
     cat "$file" | duckdb dev.duckdb \
-        -c "create table $dataset as select * from read_csv('/dev/stdin', all_varchar = true);"
+        -c "create table raw.$dataset as select * from read_csv('/dev/stdin', all_varchar = true);"
 done
 """
 sources = ["csv/*.csv"]
