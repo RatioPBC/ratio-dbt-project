@@ -5,11 +5,15 @@ This is a basic repo that will help you get set up to develop a dbt project usin
 ## Setup steps
 
 1. Install [mise](https://mise.jdx.dev) for your operating system
-2. Clone this repo
-3. Run `mise install` to install tools like Python, uv and duckdb
-4. Run `mise run test:python` and you should see "Hello from ratio-dbt-project!"
-5. Run `mise run test:dbt` and you should see dbt version information
-6. Run `mise run dbt debug` and you should see "All checks passed!"
+1. Clone this repo
+1. Run `mise install` to install tools like Python, uv and duckdb
+1. Run `mise run test:python` and you should see "Hello from ratio-dbt-project!"
+1. Run `mise run test:dbt` and you should see dbt version information
+1. Run `mise run dbt debug` and you should see "All checks passed!"
+1. Run `mise run data:get`
+1. Run `mise run data:unzip`
+1. Run `mise run data:load` and you should see a `dev.duckdb` database in this directory.
+1. Process `raw_data/fips.txt` into a CSV seed file with `fips_code,jurisdiction` as the header. It's OK to do this manually.
 
 ## Raw Data
 
