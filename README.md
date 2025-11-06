@@ -9,10 +9,10 @@ This is a basic repo that will help you get set up to develop a dbt project usin
 1. Run `mise install` to install tools like Python, uv and duckdb
 1. Run `uv run main.py` and you should see "Hello from ratio-dbt-project!"
 1. Run `dbt --version` and you should see dbt version information
-1. Run `dbt debug` and you should see "All checks passed!"
 1. Run `mise run data:get`
 1. Run `mise run data:unzip`
 1. Run `mise run data:load` and you should see a `dev.duckdb` database in this directory.
+1. Run `dbt debug` and you should see "All checks passed!"
 1. Process `raw_data/fips.txt` into a CSV seed file with `fips_code,jurisdiction` as the header. It's OK to do this manually.
 
 ## Raw Data
