@@ -34,8 +34,7 @@ do
     filename=$(basename -- "$file")
     dataset="${filename%.*}"
     echo "Loading $dataset"
-    cat "$file" | duckdb dev.duckdb \
-        -c "create table raw.$dataset as select * from read_csv('/dev/stdin', all_varchar = true);"
+    duckdb dev.duckdb -c "create table raw.$dataset as select * from read_csv('$file', all_varchar = true);"
 done
 """
 sources = ["csv/*.csv"]
