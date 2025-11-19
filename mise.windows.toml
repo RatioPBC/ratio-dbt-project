@@ -22,3 +22,12 @@ run_windows = '''
 {% endfor %}
 '''
 shell = "powershell"
+
+[tasks."data:unzip"]
+run_windows = '''
+Expand-Archive -Path csv.zip -DestinationPath .
+'''
+description = "Decompresses the data set archive"
+sources = ["csv.zip"]
+outputs = ["csv/"]
+shell = "powershell"
