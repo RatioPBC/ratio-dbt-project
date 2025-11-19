@@ -8,6 +8,7 @@ This is a basic repo that will help you get set up to develop a dbt project usin
 1. Clone this repo.
 1. Set `$MISE_ENV=windows` locally in terminal or globally in environment variable manager if you are on Windows.
   * You may also need to manually run `mise activate pwsh | Out-String | Invoke-Expression`.
+1. Run `mise dr` to make sure mise is correctly setup. If you do not get "No problems found", follow the suggested actions until you do.
 1. Run `mise install` to install tools like Python, uv and duckdb.
 1. Run `uv run main.py` and you should see "Hello from ratio-dbt-project!".
   * If this fails, try `uv sync` or `mise activate pwsh | Out-String | Invoke-Expression`.
