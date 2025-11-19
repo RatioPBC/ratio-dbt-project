@@ -11,7 +11,7 @@ This is a basic repo that will help you get set up to develop a dbt project usin
 1. Run `mise install` to install tools like Python, uv and duckdb.
 1. Run `uv run main.py` and you should see "Hello from ratio-dbt-project!".
   * If this fails, try `uv sync` or `mise activate pwsh | Out-String | Invoke-Expression`.
-1. Run `dbt --version` and you should see dbt version information.
+1. Run `uv run dbt --version` and you should see dbt version information.
 1. Run `mise run data:get`
 1. Run `mise run data:unzip`
 1. Run `mise run data:load` and you should see a `dev.duckdb` database in this directory.
