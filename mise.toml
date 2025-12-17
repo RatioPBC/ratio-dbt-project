@@ -12,6 +12,7 @@ python.uv_venv_auto = true
 idiomatic_version_file_enable_tools = []
 
 [tasks."data:load"]
+hide = true
 description = "Load CSV data into the database"
 run = """
 #!/usr/bin/env bash
@@ -28,6 +29,8 @@ sources = ["archives/*.zip"]
 outputs = ["dev.duckdb"]
 
 [tasks.clean]
+quiet = true
+hide = true
 sources = ["dev.duckdb", ".venv/"]
 run = '''
 #!/usr/bin/env bash
@@ -36,9 +39,9 @@ set -euo pipefail
 
 rm -rf {{ task_source_files() | join(sep=" ") }}
 '''
-quiet = true
 
 [tasks."data:get"]
+hide = true
 description = "Download the claims data archives from CMS"
 run = '''
 #!/usr/bin/env bash
@@ -69,6 +72,7 @@ curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Prescription_Drug_Event
 '''
 
 [tasks.zip-stats]
+hide = true
 description = "Compute the total file size of uncompressed archives in the archives/"
 run = '''
 #!/usr/bin/env bash
