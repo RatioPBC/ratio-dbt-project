@@ -11,39 +11,81 @@ uv = "latest"
 python.uv_venv_auto = true
 idiomatic_version_file_enable_tools = []
 
-[tasks."data:get"]
-description = "Downloads example data"
-run = "curl https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_csv_apr2020.zip -o csv.zip"
-outputs = ["csv.zip"]
-
-[tasks."data:unzip"]
-run = "unzip -o csv.zip"
-description = "Decompresses the data set archive"
-sources = ["csv.zip"]
-outputs = ["csv/"]
-
 [tasks."data:load"]
-description = "Loads CSV data into the database"
+description = "Load CSV data into the database"
 run = """
 #!/usr/bin/env bash
 
-duckdb dev.duckdb -c "create schema if not exists raw;"
+set -euo pipefail
 
-for file in csv/*.csv
-do
-    filename=$(basename -- "$file")
-    dataset="${filename%.*}"
-    echo "Loading $dataset"
-    duckdb dev.duckdb -c "create table raw.$dataset as select * from read_csv('$file', all_varchar = true);"
+duckdb dev.duckdb -f create.sql
+for table in beneficiary_summaries carrier_claims inpatient_claims outpatient_claims rx_drug_events; do
+  echo "Loading $table"
+  time duckdb dev.duckdb -c "use raw; load zipfs; copy $table from 'zip://archives/$table*.zip/*.csv';"
 done
 """
-sources = ["csv/*.csv"]
+sources = ["archives/*.zip"]
 outputs = ["dev.duckdb"]
 
 [tasks.clean]
-sources = ["dev.duckdb", "csv.zip", "csv/", ".venv/"]
+sources = ["dev.duckdb", ".venv/"]
 run = '''
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 rm -rf {{ task_source_files() | join(sep=" ") }}
 '''
+quiet = true
+
+[tasks."data:get"]
+description = "Download the claims data archives from CMS"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p archives
+cd archives
+
+curl "https://www.cms.gov/sites/default/files/2020-09/DE1_0_2010_Beneficiary_Summary_File_Sample_1.zip" \
+      -o "beneficiary_summaries_2010_01.zip"
+curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_beneficiary_summary_file_sample_[01-20].zip" \
+      -o "beneficiary_summaries_2008_#1.zip"
+curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2009_beneficiary_summary_file_sample_[01-20].zip" \
+      -o "beneficiary_summaries_2009_#1.zip"
+curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2010_beneficiary_summary_file_sample_[02-20].zip" \
+      -o "beneficiary_summaries_2010_#1.zip"
+curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Carrier_Claims_Sample_[01-20]A.zip" \
+      -o "carrier_claims_#1A.zip"
+curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Carrier_Claims_Sample_[01-20]B.zip" \
+      -o "carrier_claims_#1B.zip"
+curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_inpatient_claims_sample_[01-20].zip" \
+      -o "inpatient_claims_#1.zip"
+curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_outpatient_claims_sample_[01-20].zip" \
+      -o "outpatient_claims_#1.zip"
+curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_[01-20].zip" \
+      -o "rx_drug_events_#1.zip"
+'''
+
+[tasks.zip-stats]
+description = "Compute the total file size of uncompressed archives in the archives/"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+total=0
+
+for zip in "${usage_dir}"/*.zip; do
+  [[ -e "$zip" ]] || continue
+  size=$(unzip -l "$zip" | tail -1 | awk '{print $1}')
+  total=$((total + size))
+done
+
+echo "$total" | numfmt --to=iec --suffix=B
+'''
+usage = '''
+flag "--dir <dir>" help="Directory of zip files" default="archives"
+'''
+quiet = true
