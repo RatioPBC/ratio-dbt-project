@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: beneficiary_summaries
+      - name: carrier_claims
+      - name: inpatient_claims
+      - name: outpatient_claims
+      - name: rx_drug_events

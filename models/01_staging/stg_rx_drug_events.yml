@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_rx_drug_events
+    description: Staging table for prescription drug events (Part D)
+    columns:
+      - name: desynpuf_id
+        description: Beneficiary code (de-identified)
+      - name: pde_id
+        description: Prescription drug event ID
+      - name: srvc_dt
+        description: Service date
+      - name: prod_srvc_id
+        description: Product service ID (NDC code)
+      - name: qty_dspnsd_num
+        description: Quantity dispensed number
+      - name: days_suply_num
+        description: Days supply number
+      - name: ptnt_pay_amt
+        description: Patient pay amount
+      - name: tot_rx_cst_amt
+        description: Total prescription cost amount

@@ -26,7 +26,7 @@ seeds:
 models:
   ratio_claims:
     +materialized: table
-    staging:
+    01_staging:
       +materialized: view
       +docs:
         node_color: 'silver'
