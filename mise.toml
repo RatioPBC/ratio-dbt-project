@@ -1,3 +1,7 @@
+[vars]
+bucket_path = "https://ratio-synthetic-claims-fmkqn8kdews2dq6eci.t3.storage.dev/archives"
+
+
 [env]
 DBT_PROFILES_DIR="{{ cwd }}"
 UV_NO_MANAGED_PYTHON = true
@@ -51,24 +55,11 @@ set -euo pipefail
 mkdir -p archives
 cd archives
 
-curl "https://www.cms.gov/sites/default/files/2020-09/DE1_0_2010_Beneficiary_Summary_File_Sample_1.zip" \
-      -o "beneficiary_summaries_2010_01.zip"
-curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_beneficiary_summary_file_sample_[01-20].zip" \
-      -o "beneficiary_summaries_2008_#1.zip"
-curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2009_beneficiary_summary_file_sample_[01-20].zip" \
-      -o "beneficiary_summaries_2009_#1.zip"
-curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2010_beneficiary_summary_file_sample_[02-20].zip" \
-      -o "beneficiary_summaries_2010_#1.zip"
-curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Carrier_Claims_Sample_[01-20]A.zip" \
-      -o "carrier_claims_#1A.zip"
-curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Carrier_Claims_Sample_[01-20]B.zip" \
-      -o "carrier_claims_#1B.zip"
-curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_inpatient_claims_sample_[01-20].zip" \
-      -o "inpatient_claims_#1.zip"
-curl "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_outpatient_claims_sample_[01-20].zip" \
-      -o "outpatient_claims_#1.zip"
-curl "https://downloads.cms.gov/files/DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_[01-20].zip" \
-      -o "rx_drug_events_#1.zip"
+curl -O "{{ vars.bucket_path }}/beneficiary_summaries_20[08-10]_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/carrier_claims_[01-03][A-B].zip"
+curl -O "{{ vars.bucket_path }}/inpatient_claims_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/outpatient_claims_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/rx_drug_events_[01-03].zip"
 '''
 
 [tasks.zip-stats]
