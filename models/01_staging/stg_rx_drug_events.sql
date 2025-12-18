@@ -1,2 +1,4 @@
-select *
-from {{ source('raw', 'rx_drug_events') }}
+select
+  *
+from
+  { { source('raw_claims', 'rx_drug_events') } }

@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: raw
-    schema: raw
+  - name: raw_claims
+    schema: raw_claims
     tables:
       - name: beneficiary_summaries
       - name: carrier_claims

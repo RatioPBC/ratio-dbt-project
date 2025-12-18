@@ -1,2 +1,4 @@
-select *
-from {{ source('raw', 'inpatient_claims') }}
+select
+  *
+from
+  { { source('raw_claims', 'inpatient_claims') } }

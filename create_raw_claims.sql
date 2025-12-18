@@ -1,10 +1,10 @@
-create schema if not exists raw;
+create schema if not exists raw_claims;
 
 install zipfs
 from
   community;
 
-use raw;
+use raw_claims;
 
 create
 or replace table beneficiary_summaries (
