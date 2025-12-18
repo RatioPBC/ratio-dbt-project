@@ -1,4 +1,4 @@
-ratio_dbt_project:
+ratio_claims:
   target: dev
   outputs:
     dev:
