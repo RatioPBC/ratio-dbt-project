@@ -23,6 +23,31 @@ set -euo pipefail
 curl -O "{{ vars.bucket_path }}/dev.duckdb"
 '''
 
+[tasks."data:load:clinical"]
+hide = true
+description = "Load clinical CSV data into the database"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+duckdb dev.duckdb -c "create schema if not exists raw_clinical;"
+unzip -l synthea.zip "*.csv" \
+  | awk '/csv\// {split($NF, a, /[/.]/); print a[length(a)-1]}' \
+  | while read -r table ; do
+  echo "Loading $table"
+  time duckdb dev.duckdb -c "use raw_clinical; load zipfs; create table $table as select * from 'zip://synthea.zip/csv/$table.csv';"
+done
+'''
+sources = ["synthea.zip"]
+outputs = ["dev.duckdb"]
+
+[tasks."data:get:synthea"]
+description = "Downloads example data"
+run = "curl https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_csv_apr2020.zip -o synthea.zip"
+outputs = ["synthea.zip"]
+hide = true
+
 [tasks."data:load:claims"]
 hide = true
 description = "Load claims CSV data into the database"
