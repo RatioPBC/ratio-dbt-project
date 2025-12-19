@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: stg_beneficiary_summaries
+    description: Staging table for beneficiary summary data
+    columns:
+      - name: desynpuf_id
+        description: Beneficiary code (de-identified)
+      - name: bene_birth_dt
+        description: Beneficiary date of birth
+      - name: bene_death_dt
+        description: Beneficiary date of death
+      - name: bene_sex_ident_cd
+        description: Beneficiary sex identification code
+      - name: bene_race_cd
+        description: Beneficiary race code
+      - name: bene_esrd_ind
+        description: Beneficiary end-stage renal disease indicator
+      - name: sp_state_code
+        description: State code
+      - name: bene_county_cd
+        description: Beneficiary county code
+      - name: bene_hi_cvrage_tot_mons
+        description: Total months of hospital insurance coverage
+      - name: bene_smi_cvrage_tot_mons
+        description: Total months of supplementary medical insurance coverage
+      - name: bene_hmo_cvrage_tot_mons
+        description: Total months of HMO coverage
+      - name: plan_cvrg_mos_num
+        description: Number of months of plan coverage
+      - name: sp_alzhdmta
+        description: Chronic condition indicator - Alzheimer's disease
+      - name: sp_chf
+        description: Chronic condition indicator - heart failure
+      - name: sp_chrnkidn
+        description: Chronic condition indicator - chronic kidney disease
+      - name: sp_cncr
+        description: Chronic condition indicator - cancer
+      - name: sp_copd
+        description: Chronic condition indicator - COPD
+      - name: sp_depressn
+        description: Chronic condition indicator - depression
+      - name: sp_diabetes
+        description: Chronic condition indicator - diabetes
+      - name: sp_ischmcht
+        description: Chronic condition indicator - ischemic heart disease
+      - name: sp_osteoprs
+        description: Chronic condition indicator - osteoporosis
+      - name: sp_ra_oa
+        description: Chronic condition indicator - rheumatoid arthritis / osteoarthritis
+      - name: sp_strketia
+        description: Chronic condition indicator - stroke / transient ischemic attack
+      - name: medreimb_ip
+        description: Inpatient annual Medicare reimbursement amount
+      - name: benres_ip
+        description: Inpatient annual beneficiary responsibility amount
+      - name: pppymt_ip
+        description: Inpatient annual primary payer reimbursement amount
+      - name: medreimb_op
+        description: Outpatient annual Medicare reimbursement amount
+      - name: benres_op
+        description: Outpatient annual beneficiary responsibility amount
+      - name: pppymt_op
+        description: Outpatient annual primary payer reimbursement amount
+      - name: medreimb_car
+        description: Carrier annual Medicare reimbursement amount
+      - name: benres_car
+        description: Carrier annual beneficiary responsibility amount
+      - name: pppymt_car
+        description: Carrier annual primary payer reimbursement amount

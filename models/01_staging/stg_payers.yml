@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_payers
+    description: Staging table for insurance payer data
+    columns:
+      - name: Id
+        description: Unique payer identifier
+      - name: NAME
+        description: Name of the payer
+      - name: ADDRESS
+        description: Street address of the payer
+      - name: CITY
+        description: City where the payer is located
+      - name: STATE_HEADQUARTERED
+        description: State where the payer is headquartered
+      - name: ZIP
+        description: ZIP code of the payer
+      - name: PHONE
+        description: Phone number of the payer
+      - name: AMOUNT_COVERED
+        description: Total amount covered by the payer
+      - name: AMOUNT_UNCOVERED
+        description: Total amount not covered by the payer
+      - name: REVENUE
+        description: Total revenue of the payer
+      - name: COVERED_ENCOUNTERS
+        description: Number of encounters covered by the payer
+      - name: UNCOVERED_ENCOUNTERS
+        description: Number of encounters not covered by the payer
+      - name: COVERED_MEDICATIONS
+        description: Number of medications covered by the payer
+      - name: UNCOVERED_MEDICATIONS
+        description: Number of medications not covered by the payer
+      - name: COVERED_PROCEDURES
+        description: Number of procedures covered by the payer
+      - name: UNCOVERED_PROCEDURES
+        description: Number of procedures not covered by the payer
+      - name: COVERED_IMMUNIZATIONS
+        description: Number of immunizations covered by the payer
+      - name: UNCOVERED_IMMUNIZATIONS
+        description: Number of immunizations not covered by the payer
+      - name: UNIQUE_CUSTOMERS
+        description: Number of unique customers covered by the payer
+      - name: QOLS_AVG
+        description: Average quality of life score for payer's customers
+      - name: MEMBER_MONTHS
+        description: Total member months of coverage

@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_observations
+    description: Staging table for clinical observation data
+    columns:
+      - name: DATE
+        description: Timestamp when the observation was recorded
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where observation was recorded
+      - name: CODE
+        description: Observation code
+      - name: DESCRIPTION
+        description: Description of the observation
+      - name: VALUE
+        description: Value of the observation
+      - name: UNITS
+        description: Units of measurement for the observation value
+      - name: TYPE
+        description: Type of observation

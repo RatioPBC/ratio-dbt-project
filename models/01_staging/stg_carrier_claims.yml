@@ -1,0 +1,290 @@
+version: 2
+
+models:
+  - name: stg_carrier_claims
+    description: Staging table for carrier (professional services) claims
+    columns:
+      - name: desynpuf_id
+        description: Beneficiary code (de-identified)
+      - name: clm_id
+        description: Claim ID
+      - name: clm_from_dt
+        description: Claim from date
+      - name: clm_thru_dt
+        description: Claim through date
+      - name: icd9_dgns_cd_1
+        description: ICD-9 diagnosis code 1
+      - name: icd9_dgns_cd_2
+        description: ICD-9 diagnosis code 2
+      - name: icd9_dgns_cd_3
+        description: ICD-9 diagnosis code 3
+      - name: icd9_dgns_cd_4
+        description: ICD-9 diagnosis code 4
+      - name: icd9_dgns_cd_5
+        description: ICD-9 diagnosis code 5
+      - name: icd9_dgns_cd_6
+        description: ICD-9 diagnosis code 6
+      - name: icd9_dgns_cd_7
+        description: ICD-9 diagnosis code 7
+      - name: icd9_dgns_cd_8
+        description: ICD-9 diagnosis code 8
+      - name: prf_physn_npi_1
+        description: Performing physician NPI 1
+      - name: prf_physn_npi_2
+        description: Performing physician NPI 2
+      - name: prf_physn_npi_3
+        description: Performing physician NPI 3
+      - name: prf_physn_npi_4
+        description: Performing physician NPI 4
+      - name: prf_physn_npi_5
+        description: Performing physician NPI 5
+      - name: prf_physn_npi_6
+        description: Performing physician NPI 6
+      - name: prf_physn_npi_7
+        description: Performing physician NPI 7
+      - name: prf_physn_npi_8
+        description: Performing physician NPI 8
+      - name: prf_physn_npi_9
+        description: Performing physician NPI 9
+      - name: prf_physn_npi_10
+        description: Performing physician NPI 10
+      - name: prf_physn_npi_11
+        description: Performing physician NPI 11
+      - name: prf_physn_npi_12
+        description: Performing physician NPI 12
+      - name: prf_physn_npi_13
+        description: Performing physician NPI 13
+      - name: tax_num_1
+        description: Tax number 1
+      - name: tax_num_2
+        description: Tax number 2
+      - name: tax_num_3
+        description: Tax number 3
+      - name: tax_num_4
+        description: Tax number 4
+      - name: tax_num_5
+        description: Tax number 5
+      - name: tax_num_6
+        description: Tax number 6
+      - name: tax_num_7
+        description: Tax number 7
+      - name: tax_num_8
+        description: Tax number 8
+      - name: tax_num_9
+        description: Tax number 9
+      - name: tax_num_10
+        description: Tax number 10
+      - name: tax_num_11
+        description: Tax number 11
+      - name: tax_num_12
+        description: Tax number 12
+      - name: tax_num_13
+        description: Tax number 13
+      - name: hcpcs_cd_1
+        description: HCPCS code 1
+      - name: hcpcs_cd_2
+        description: HCPCS code 2
+      - name: hcpcs_cd_3
+        description: HCPCS code 3
+      - name: hcpcs_cd_4
+        description: HCPCS code 4
+      - name: hcpcs_cd_5
+        description: HCPCS code 5
+      - name: hcpcs_cd_6
+        description: HCPCS code 6
+      - name: hcpcs_cd_7
+        description: HCPCS code 7
+      - name: hcpcs_cd_8
+        description: HCPCS code 8
+      - name: hcpcs_cd_9
+        description: HCPCS code 9
+      - name: hcpcs_cd_10
+        description: HCPCS code 10
+      - name: hcpcs_cd_11
+        description: HCPCS code 11
+      - name: hcpcs_cd_12
+        description: HCPCS code 12
+      - name: hcpcs_cd_13
+        description: HCPCS code 13
+      - name: line_nch_pmt_amt_1
+        description: Line NCH payment amount 1
+      - name: line_nch_pmt_amt_2
+        description: Line NCH payment amount 2
+      - name: line_nch_pmt_amt_3
+        description: Line NCH payment amount 3
+      - name: line_nch_pmt_amt_4
+        description: Line NCH payment amount 4
+      - name: line_nch_pmt_amt_5
+        description: Line NCH payment amount 5
+      - name: line_nch_pmt_amt_6
+        description: Line NCH payment amount 6
+      - name: line_nch_pmt_amt_7
+        description: Line NCH payment amount 7
+      - name: line_nch_pmt_amt_8
+        description: Line NCH payment amount 8
+      - name: line_nch_pmt_amt_9
+        description: Line NCH payment amount 9
+      - name: line_nch_pmt_amt_10
+        description: Line NCH payment amount 10
+      - name: line_nch_pmt_amt_11
+        description: Line NCH payment amount 11
+      - name: line_nch_pmt_amt_12
+        description: Line NCH payment amount 12
+      - name: line_nch_pmt_amt_13
+        description: Line NCH payment amount 13
+      - name: line_bene_ptb_ddctbl_amt_1
+        description: Line beneficiary Part B deductible amount 1
+      - name: line_bene_ptb_ddctbl_amt_2
+        description: Line beneficiary Part B deductible amount 2
+      - name: line_bene_ptb_ddctbl_amt_3
+        description: Line beneficiary Part B deductible amount 3
+      - name: line_bene_ptb_ddctbl_amt_4
+        description: Line beneficiary Part B deductible amount 4
+      - name: line_bene_ptb_ddctbl_amt_5
+        description: Line beneficiary Part B deductible amount 5
+      - name: line_bene_ptb_ddctbl_amt_6
+        description: Line beneficiary Part B deductible amount 6
+      - name: line_bene_ptb_ddctbl_amt_7
+        description: Line beneficiary Part B deductible amount 7
+      - name: line_bene_ptb_ddctbl_amt_8
+        description: Line beneficiary Part B deductible amount 8
+      - name: line_bene_ptb_ddctbl_amt_9
+        description: Line beneficiary Part B deductible amount 9
+      - name: line_bene_ptb_ddctbl_amt_10
+        description: Line beneficiary Part B deductible amount 10
+      - name: line_bene_ptb_ddctbl_amt_11
+        description: Line beneficiary Part B deductible amount 11
+      - name: line_bene_ptb_ddctbl_amt_12
+        description: Line beneficiary Part B deductible amount 12
+      - name: line_bene_ptb_ddctbl_amt_13
+        description: Line beneficiary Part B deductible amount 13
+      - name: line_bene_prmry_pyr_pd_amt_1
+        description: Line beneficiary primary payer paid amount 1
+      - name: line_bene_prmry_pyr_pd_amt_2
+        description: Line beneficiary primary payer paid amount 2
+      - name: line_bene_prmry_pyr_pd_amt_3
+        description: Line beneficiary primary payer paid amount 3
+      - name: line_bene_prmry_pyr_pd_amt_4
+        description: Line beneficiary primary payer paid amount 4
+      - name: line_bene_prmry_pyr_pd_amt_5
+        description: Line beneficiary primary payer paid amount 5
+      - name: line_bene_prmry_pyr_pd_amt_6
+        description: Line beneficiary primary payer paid amount 6
+      - name: line_bene_prmry_pyr_pd_amt_7
+        description: Line beneficiary primary payer paid amount 7
+      - name: line_bene_prmry_pyr_pd_amt_8
+        description: Line beneficiary primary payer paid amount 8
+      - name: line_bene_prmry_pyr_pd_amt_9
+        description: Line beneficiary primary payer paid amount 9
+      - name: line_bene_prmry_pyr_pd_amt_10
+        description: Line beneficiary primary payer paid amount 10
+      - name: line_bene_prmry_pyr_pd_amt_11
+        description: Line beneficiary primary payer paid amount 11
+      - name: line_bene_prmry_pyr_pd_amt_12
+        description: Line beneficiary primary payer paid amount 12
+      - name: line_bene_prmry_pyr_pd_amt_13
+        description: Line beneficiary primary payer paid amount 13
+      - name: line_coinsrnc_amt_1
+        description: Line coinsurance amount 1
+      - name: line_coinsrnc_amt_2
+        description: Line coinsurance amount 2
+      - name: line_coinsrnc_amt_3
+        description: Line coinsurance amount 3
+      - name: line_coinsrnc_amt_4
+        description: Line coinsurance amount 4
+      - name: line_coinsrnc_amt_5
+        description: Line coinsurance amount 5
+      - name: line_coinsrnc_amt_6
+        description: Line coinsurance amount 6
+      - name: line_coinsrnc_amt_7
+        description: Line coinsurance amount 7
+      - name: line_coinsrnc_amt_8
+        description: Line coinsurance amount 8
+      - name: line_coinsrnc_amt_9
+        description: Line coinsurance amount 9
+      - name: line_coinsrnc_amt_10
+        description: Line coinsurance amount 10
+      - name: line_coinsrnc_amt_11
+        description: Line coinsurance amount 11
+      - name: line_coinsrnc_amt_12
+        description: Line coinsurance amount 12
+      - name: line_coinsrnc_amt_13
+        description: Line coinsurance amount 13
+      - name: line_alowd_chrg_amt_1
+        description: Line allowed charge amount 1
+      - name: line_alowd_chrg_amt_2
+        description: Line allowed charge amount 2
+      - name: line_alowd_chrg_amt_3
+        description: Line allowed charge amount 3
+      - name: line_alowd_chrg_amt_4
+        description: Line allowed charge amount 4
+      - name: line_alowd_chrg_amt_5
+        description: Line allowed charge amount 5
+      - name: line_alowd_chrg_amt_6
+        description: Line allowed charge amount 6
+      - name: line_alowd_chrg_amt_7
+        description: Line allowed charge amount 7
+      - name: line_alowd_chrg_amt_8
+        description: Line allowed charge amount 8
+      - name: line_alowd_chrg_amt_9
+        description: Line allowed charge amount 9
+      - name: line_alowd_chrg_amt_10
+        description: Line allowed charge amount 10
+      - name: line_alowd_chrg_amt_11
+        description: Line allowed charge amount 11
+      - name: line_alowd_chrg_amt_12
+        description: Line allowed charge amount 12
+      - name: line_alowd_chrg_amt_13
+        description: Line allowed charge amount 13
+      - name: line_prcsg_ind_cd_1
+        description: Line processing indicator code 1
+      - name: line_prcsg_ind_cd_2
+        description: Line processing indicator code 2
+      - name: line_prcsg_ind_cd_3
+        description: Line processing indicator code 3
+      - name: line_prcsg_ind_cd_4
+        description: Line processing indicator code 4
+      - name: line_prcsg_ind_cd_5
+        description: Line processing indicator code 5
+      - name: line_prcsg_ind_cd_6
+        description: Line processing indicator code 6
+      - name: line_prcsg_ind_cd_7
+        description: Line processing indicator code 7
+      - name: line_prcsg_ind_cd_8
+        description: Line processing indicator code 8
+      - name: line_prcsg_ind_cd_9
+        description: Line processing indicator code 9
+      - name: line_prcsg_ind_cd_10
+        description: Line processing indicator code 10
+      - name: line_prcsg_ind_cd_11
+        description: Line processing indicator code 11
+      - name: line_prcsg_ind_cd_12
+        description: Line processing indicator code 12
+      - name: line_prcsg_ind_cd_13
+        description: Line processing indicator code 13
+      - name: line_icd9_dgns_cd_1
+        description: Line ICD-9 diagnosis code 1
+      - name: line_icd9_dgns_cd_2
+        description: Line ICD-9 diagnosis code 2
+      - name: line_icd9_dgns_cd_3
+        description: Line ICD-9 diagnosis code 3
+      - name: line_icd9_dgns_cd_4
+        description: Line ICD-9 diagnosis code 4
+      - name: line_icd9_dgns_cd_5
+        description: Line ICD-9 diagnosis code 5
+      - name: line_icd9_dgns_cd_6
+        description: Line ICD-9 diagnosis code 6
+      - name: line_icd9_dgns_cd_7
+        description: Line ICD-9 diagnosis code 7
+      - name: line_icd9_dgns_cd_8
+        description: Line ICD-9 diagnosis code 8
+      - name: line_icd9_dgns_cd_9
+        description: Line ICD-9 diagnosis code 9
+      - name: line_icd9_dgns_cd_10
+        description: Line ICD-9 diagnosis code 10
+      - name: line_icd9_dgns_cd_11
+        description: Line ICD-9 diagnosis code 11
+      - name: line_icd9_dgns_cd_12
+        description: Line ICD-9 diagnosis code 12
+      - name: line_icd9_dgns_cd_13
+        description: Line ICD-9 diagnosis code 13

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_medications
+    description: Staging table for medication data
+    columns:
+      - name: START
+        description: Timestamp when the medication was started
+      - name: STOP
+        description: Timestamp when the medication was stopped
+      - name: PATIENT
+        description: Patient identifier
+      - name: PAYER
+        description: Payer identifier for the medication
+      - name: ENCOUNTER
+        description: Encounter identifier where medication was prescribed
+      - name: CODE
+        description: Medication code
+      - name: DESCRIPTION
+        description: Description of the medication
+      - name: BASE_COST
+        description: Base cost of the medication
+      - name: PAYER_COVERAGE
+        description: Amount covered by the payer
+      - name: DISPENSES
+        description: Number of times the medication was dispensed
+      - name: TOTALCOST
+        description: Total cost of the medication
+      - name: REASONCODE
+        description: Code for the reason the medication was prescribed
+      - name: REASONDESCRIPTION
+        description: Description of the reason for the medication

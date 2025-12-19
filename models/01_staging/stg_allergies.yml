@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_allergies
+    description: Staging table for patient allergy data
+    columns:
+      - name: START
+        description: Date when the allergy was identified
+      - name: STOP
+        description: Date when the allergy was resolved or ended
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where allergy was recorded
+      - name: CODE
+        description: Allergy code
+      - name: DESCRIPTION
+        description: Description of the allergy

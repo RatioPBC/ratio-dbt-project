@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_organizations
+    description: Staging table for healthcare organization data
+    columns:
+      - name: Id
+        description: Unique organization identifier
+      - name: NAME
+        description: Name of the organization
+      - name: ADDRESS
+        description: Street address of the organization
+      - name: CITY
+        description: City where the organization is located
+      - name: STATE
+        description: State where the organization is located
+      - name: ZIP
+        description: ZIP code of the organization
+      - name: LAT
+        description: Latitude coordinate of the organization
+      - name: LON
+        description: Longitude coordinate of the organization
+      - name: PHONE
+        description: Phone number of the organization
+      - name: REVENUE
+        description: Revenue of the organization
+      - name: UTILIZATION
+        description: Utilization metric for the organization

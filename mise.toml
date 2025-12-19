@@ -1,3 +1,6 @@
+[vars]
+bucket_path = "https://ratio-synthetic-claims-fmkqn8kdews2dq6eci.t3.storage.dev"
+
 [env]
 DBT_PROFILES_DIR="{{ cwd }}"
 UV_NO_MANAGED_PYTHON = true
@@ -11,39 +14,106 @@ uv = "latest"
 python.uv_venv_auto = true
 idiomatic_version_file_enable_tools = []
 
-[tasks."data:get"]
-description = "Downloads example data"
-run = "curl https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_csv_apr2020.zip -o csv.zip"
-outputs = ["csv.zip"]
-
-[tasks."data:unzip"]
-run = "unzip -o csv.zip"
-description = "Decompresses the data set archive"
-sources = ["csv.zip"]
-outputs = ["csv/"]
-
-[tasks."data:load"]
-description = "Loads CSV data into the database"
-run = """
-#!/usr/bin/env bash
-
-duckdb dev.duckdb -c "create schema if not exists raw;"
-
-for file in csv/*.csv
-do
-    filename=$(basename -- "$file")
-    dataset="${filename%.*}"
-    echo "Loading $dataset"
-    duckdb dev.duckdb -c "create table raw.$dataset as select * from read_csv('$file', all_varchar = true);"
-done
-"""
-sources = ["csv/*.csv"]
-outputs = ["dev.duckdb"]
-
-[tasks.clean]
-sources = ["dev.duckdb", "csv.zip", "csv/", ".venv/"]
+[tasks."db:get"]
+description = "Download the dev database"
 run = '''
 #!/usr/bin/env bash
 
+set -euo pipefail
+curl -O "{{ vars.bucket_path }}/dev.duckdb"
+'''
+
+[tasks."data:load:clinical"]
+hide = true
+description = "Load clinical CSV data into the database"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+duckdb dev.duckdb -c "create schema if not exists raw_clinical;"
+unzip -l synthea.zip "*.csv" \
+  | awk '/csv\// {split($NF, a, /[/.]/); print a[length(a)-1]}' \
+  | while read -r table ; do
+  echo "Loading $table"
+  time duckdb dev.duckdb -c "use raw_clinical; load zipfs; create table $table as select * from 'zip://synthea.zip/csv/$table.csv';"
+done
+'''
+sources = ["synthea.zip"]
+outputs = ["dev.duckdb"]
+
+[tasks."data:get:synthea"]
+description = "Downloads example data"
+run = "curl https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_csv_apr2020.zip -o synthea.zip"
+outputs = ["synthea.zip"]
+hide = true
+
+[tasks."data:load:claims"]
+hide = true
+description = "Load claims CSV data into the database"
+run = """
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+duckdb dev.duckdb -f create_raw_claims.sql
+for table in beneficiary_summaries carrier_claims inpatient_claims outpatient_claims rx_drug_events; do
+  echo "Loading $table"
+  time duckdb dev.duckdb -c "use raw_claims; load zipfs; copy $table from 'zip://archives/$table*.zip/*.csv';"
+done
+"""
+sources = ["archives/*.zip"]
+outputs = ["dev.duckdb"]
+
+[tasks.clean]
+quiet = true
+hide = true
+sources = ["dev.duckdb", ".venv/"]
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
 rm -rf {{ task_source_files() | join(sep=" ") }}
 '''
+
+[tasks."data:get"]
+hide = true
+description = "Download the claims data archives from CMS"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p archives
+cd archives
+
+curl -O "{{ vars.bucket_path }}/archives/beneficiary_summaries_20[08-10]_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/archives/carrier_claims_[01-03][A-B].zip"
+curl -O "{{ vars.bucket_path }}/archives/inpatient_claims_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/archives/outpatient_claims_[01-03].zip"
+curl -O "{{ vars.bucket_path }}/archives/rx_drug_events_[01-03].zip"
+'''
+
+[tasks.zip-stats]
+hide = true
+description = "Compute the total file size of uncompressed archives in the archives/"
+run = '''
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+total=0
+
+for zip in "${usage_dir}"/*.zip; do
+  [[ -e "$zip" ]] || continue
+  size=$(unzip -l "$zip" | tail -1 | awk '{print $1}')
+  total=$((total + size))
+done
+
+echo "$total" | numfmt --to=iec --suffix=B
+'''
+usage = '''
+flag "--dir <dir>" help="Directory of zip files" default="archives"
+'''
+quiet = true

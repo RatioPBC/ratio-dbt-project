@@ -1,6 +1,6 @@
 def main():
-   print("Hello from ratio-dbt-project!")
+    print("Hello from Ratio!")
 
 
 if __name__ == "__main__":
-   main()
+    main()

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_devices
+    description: Staging table for medical device data
+    columns:
+      - name: START
+        description: Timestamp when the device was implanted or started
+      - name: STOP
+        description: Date when the device was removed or stopped
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where device was implanted
+      - name: CODE
+        description: Device code
+      - name: DESCRIPTION
+        description: Description of the device
+      - name: UDI
+        description: Unique Device Identifier

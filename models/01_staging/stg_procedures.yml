@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_procedures
+    description: Staging table for medical procedure data
+    columns:
+      - name: DATE
+        description: Timestamp when the procedure was performed
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where procedure was performed
+      - name: CODE
+        description: Procedure code
+      - name: DESCRIPTION
+        description: Description of the procedure
+      - name: BASE_COST
+        description: Base cost of the procedure
+      - name: REASONCODE
+        description: Code for the reason the procedure was performed
+      - name: REASONDESCRIPTION
+        description: Description of the reason for the procedure
