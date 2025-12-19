@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_encounters
+    description: Staging table for patient encounter data
+    columns:
+      - name: Id
+        description: Unique encounter identifier
+      - name: START
+        description: Timestamp when the encounter started
+      - name: STOP
+        description: Timestamp when the encounter ended
+      - name: PATIENT
+        description: Patient identifier
+      - name: ORGANIZATION
+        description: Organization identifier where encounter occurred
+      - name: PROVIDER
+        description: Provider identifier for the encounter
+      - name: PAYER
+        description: Payer identifier for the encounter
+      - name: ENCOUNTERCLASS
+        description: Class of encounter (e.g., inpatient, outpatient, emergency)
+      - name: CODE
+        description: Encounter type code
+      - name: DESCRIPTION
+        description: Description of the encounter type
+      - name: BASE_ENCOUNTER_COST
+        description: Base cost of the encounter
+      - name: TOTAL_CLAIM_COST
+        description: Total claim cost for the encounter
+      - name: PAYER_COVERAGE
+        description: Amount covered by the payer
+      - name: REASONCODE
+        description: Code for the reason for the encounter
+      - name: REASONDESCRIPTION
+        description: Description of the reason for the encounter

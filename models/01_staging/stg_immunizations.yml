@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_immunizations
+    description: Staging table for immunization data
+    columns:
+      - name: DATE
+        description: Timestamp when the immunization was administered
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where immunization was administered
+      - name: CODE
+        description: Immunization code
+      - name: DESCRIPTION
+        description: Description of the immunization
+      - name: BASE_COST
+        description: Base cost of the immunization

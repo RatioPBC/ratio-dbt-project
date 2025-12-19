@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_conditions
+    description: Staging table for patient condition/diagnosis data
+    columns:
+      - name: START
+        description: Date when the condition was diagnosed
+      - name: STOP
+        description: Date when the condition was resolved
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where condition was diagnosed
+      - name: CODE
+        description: Condition/diagnosis code
+      - name: DESCRIPTION
+        description: Description of the condition

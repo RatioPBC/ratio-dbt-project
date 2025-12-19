@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_imaging_studies
+    description: Staging table for imaging study data
+    columns:
+      - name: Id
+        description: Unique imaging study identifier
+      - name: DATE
+        description: Timestamp when the imaging study was performed
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where imaging study was performed
+      - name: BODYSITE_CODE
+        description: Code for the body site imaged
+      - name: BODYSITE_DESCRIPTION
+        description: Description of the body site imaged
+      - name: MODALITY_CODE
+        description: Code for the imaging modality used
+      - name: MODALITY_DESCRIPTION
+        description: Description of the imaging modality (e.g., X-ray, MRI, CT)
+      - name: SOP_CODE
+        description: Service-Object Pair code
+      - name: SOP_DESCRIPTION
+        description: Description of the Service-Object Pair

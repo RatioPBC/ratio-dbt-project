@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_careplans
+    description: Staging table for patient care plan data
+    columns:
+      - name: Id
+        description: Unique care plan identifier
+      - name: START
+        description: Date when the care plan started
+      - name: STOP
+        description: Date when the care plan ended
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where care plan was created
+      - name: CODE
+        description: Care plan code
+      - name: DESCRIPTION
+        description: Description of the care plan
+      - name: REASONCODE
+        description: Code for the reason the care plan was created
+      - name: REASONDESCRIPTION
+        description: Description of the reason for the care plan

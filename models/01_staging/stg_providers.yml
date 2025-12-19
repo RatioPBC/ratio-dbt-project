@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_providers
+    description: Staging table for healthcare provider data
+    columns:
+      - name: Id
+        description: Unique provider identifier
+      - name: ORGANIZATION
+        description: Organization identifier where provider works
+      - name: NAME
+        description: Name of the provider
+      - name: GENDER
+        description: Provider's gender
+      - name: SPECIALITY
+        description: Provider's medical specialty
+      - name: ADDRESS
+        description: Street address of the provider
+      - name: CITY
+        description: City where the provider is located
+      - name: STATE
+        description: State where the provider is located
+      - name: ZIP
+        description: ZIP code of the provider
+      - name: LAT
+        description: Latitude coordinate of the provider's location
+      - name: LON
+        description: Longitude coordinate of the provider's location
+      - name: UTILIZATION
+        description: Utilization metric for the provider

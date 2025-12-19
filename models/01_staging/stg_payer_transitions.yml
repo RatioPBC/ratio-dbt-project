@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_payer_transitions
+    description: Staging table for patient payer transition data
+    columns:
+      - name: PATIENT
+        description: Patient identifier
+      - name: START_YEAR
+        description: Year when the payer coverage started
+      - name: END_YEAR
+        description: Year when the payer coverage ended
+      - name: PAYER
+        description: Payer identifier
+      - name: OWNERSHIP
+        description: Ownership type of the payer coverage

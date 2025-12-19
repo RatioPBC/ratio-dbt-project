@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_supplies
+    description: Staging table for medical supply data
+    columns:
+      - name: DATE
+        description: Date when the supply was provided
+      - name: PATIENT
+        description: Patient identifier
+      - name: ENCOUNTER
+        description: Encounter identifier where supply was provided
+      - name: CODE
+        description: Supply code
+      - name: DESCRIPTION
+        description: Description of the supply
+      - name: QUANTITY
+        description: Quantity of the supply provided

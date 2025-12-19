@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_patients
+    description: Staging table for patient demographic and personal data
+    columns:
+      - name: Id
+        description: Unique patient identifier
+      - name: BIRTHDATE
+        description: Patient's date of birth
+      - name: DEATHDATE
+        description: Patient's date of death (if deceased)
+      - name: SSN
+        description: Patient's Social Security Number
+      - name: DRIVERS
+        description: Driver's license number
+      - name: PASSPORT
+        description: Passport number
+      - name: PREFIX
+        description: Name prefix (e.g., Mr., Mrs., Dr.)
+      - name: FIRST
+        description: Patient's first name
+      - name: LAST
+        description: Patient's last name
+      - name: SUFFIX
+        description: Name suffix (e.g., Jr., Sr., III)
+      - name: MAIDEN
+        description: Maiden name
+      - name: MARITAL
+        description: Marital status
+      - name: RACE
+        description: Patient's race
+      - name: ETHNICITY
+        description: Patient's ethnicity
+      - name: GENDER
+        description: Patient's gender
+      - name: BIRTHPLACE
+        description: Patient's place of birth
+      - name: ADDRESS
+        description: Patient's street address
+      - name: CITY
+        description: City where patient resides
+      - name: STATE
+        description: State where patient resides
+      - name: COUNTY
+        description: County where patient resides
+      - name: ZIP
+        description: Patient's ZIP code
+      - name: LAT
+        description: Latitude coordinate of patient's address
+      - name: LON
+        description: Longitude coordinate of patient's address
+      - name: HEALTHCARE_EXPENSES
+        description: Total healthcare expenses for the patient
+      - name: HEALTHCARE_COVERAGE
+        description: Total healthcare coverage amount for the patient
