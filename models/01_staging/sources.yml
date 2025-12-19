@@ -1,6 +1,25 @@
 version: 2
 
 sources:
+  - name: raw_clinical
+    schema: raw_clinical
+    tables:
+      - name: allergies
+      - name: careplans
+      - name: conditions
+      - name: devices
+      - name: encounters
+      - name: imaging_studies
+      - name: immunizations
+      - name: medications
+      - name: observations
+      - name: organizations
+      - name: patients
+      - name: payer_transitions
+      - name: payers
+      - name: procedures
+      - name: providers
+      - name: supplies
   - name: raw_claims
     schema: raw_claims
     tables:
