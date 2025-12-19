@@ -1,4 +1,4 @@
 select
   *
 from
-  { { source('raw_claims', 'outpatient_claims') } }
+  {{ source('raw_claims', 'outpatient_claims') }}
