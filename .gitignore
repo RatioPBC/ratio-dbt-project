@@ -3,5 +3,5 @@
 /ratio_dbt_project
 /target
 .user.yml
-dev.duckdb
-raw.duckdb
+*.duckdb
+*.zip
