@@ -20,7 +20,7 @@ run = '''
 #!/usr/bin/env bash
 
 set -euo pipefail
-curl -O "{{ vars.bucket_path }}/dev.duckdb"
+curl -C - -O --connect-timeout 30 --keepalive-time 60 --retry 5 --retry-delay 10 "{{ vars.bucket_path }}/dev.duckdb"
 '''
 
 [tasks."data:load:clinical"]
