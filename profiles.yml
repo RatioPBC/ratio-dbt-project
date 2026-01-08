@@ -1,4 +1,4 @@
-ratio_claims:
+ratio_duckdb:
   target: dev
   outputs:
     dev:

@@ -1,9 +1,9 @@
-name: 'ratio_claims'
+name: 'ratio_dbt_project'
 
 config-version: 2
 version: '0.1'
 
-profile: 'ratio_claims'
+profile: 'ratio_duckdb'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
@@ -24,7 +24,7 @@ seeds:
     node_color: '#cd7f32'
 
 models:
-  ratio_claims:
+  ratio_dbt_project:
     +materialized: table
     01_staging:
       +materialized: view
