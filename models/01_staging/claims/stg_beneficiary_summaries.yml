@@ -1,5 +1,4 @@
 version: 2
-
 models:
   - name: stg_beneficiary_summaries
     description: Staging table for beneficiary summary data
@@ -68,3 +67,5 @@ models:
         description: Carrier annual beneficiary responsibility amount
       - name: pppymt_car
         description: Carrier annual primary payer reimbursement amount
+      - name: year
+        description: Year the summary pertains to

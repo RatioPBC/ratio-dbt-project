@@ -23,7 +23,9 @@ sources:
   - name: raw_claims
     schema: raw_claims
     tables:
-      - name: beneficiary_summaries
+      - name: beneficiary_summaries_2008
+      - name: beneficiary_summaries_2009
+      - name: beneficiary_summaries_2010
       - name: carrier_claims
       - name: inpatient_claims
       - name: outpatient_claims
