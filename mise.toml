@@ -33,7 +33,7 @@ set -euo pipefail
 
 duckdb dev.duckdb -c "create schema if not exists raw_clinical;"
 unzip -l synthea.zip "*.csv" \
-  | awk '/csv\// {split($NF, a, /[/.]/); print a[length(a)-1]}' \
+  | awk '/csv\// {split($NF, a, /[\/.]/); print a[length(a)-1]}' \
   | while read -r table ; do
   echo "Loading $table"
   time duckdb dev.duckdb -c "use raw_clinical; load zipfs; create table $table as select * from 'zip://synthea.zip/csv/$table.csv';"
