@@ -7,7 +7,7 @@ from
 use raw_claims;
 
 create
-or replace table beneficiary_summaries (
+or replace table beneficiary_summaries_2008 (
   DESYNPUF_ID VARCHAR,
   BENE_BIRTH_DT VARCHAR,
   BENE_DEATH_DT VARCHAR,
@@ -41,6 +41,18 @@ or replace table beneficiary_summaries (
   BENRES_CAR VARCHAR,
   PPPYMT_CAR VARCHAR,
 );
+
+create table beneficiary_summaries_2009 as
+select
+  *
+from
+  beneficiary_summaries_2008;
+
+create table beneficiary_summaries_2010 as
+select
+  *
+from
+  beneficiary_summaries_2008;
 
 create
 or replace table carrier_claims (

@@ -57,7 +57,7 @@ run = """
 set -euo pipefail
 
 duckdb dev.duckdb -f create_raw_claims.sql
-for table in beneficiary_summaries carrier_claims inpatient_claims outpatient_claims rx_drug_events; do
+for table in beneficiary_summaries_2008 beneficiary_summaries_2009 beneficiary_summaries_2010 carrier_claims inpatient_claims outpatient_claims rx_drug_events; do
   echo "Loading $table"
   time duckdb dev.duckdb -c "use raw_claims; load zipfs; copy $table from 'zip://archives/$table*.zip/*.csv';"
 done
