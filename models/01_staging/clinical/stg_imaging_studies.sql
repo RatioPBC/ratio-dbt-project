@@ -1,4 +1,13 @@
 select
-  *
+ 	Id,
+	DATE,
+	PATIENT,
+	ENCOUNTER,
+	BODYSITE_CODE,
+	BODYSITE_DESCRIPTION,
+	MODALITY_CODE,
+	MODALITY_DESCRIPTION,
+	SOP_CODE,
+	SOP_DESCRIPTION
 from
   {{ source('raw_clinical', 'imaging_studies') }}

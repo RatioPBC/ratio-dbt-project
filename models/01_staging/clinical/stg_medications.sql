@@ -1,4 +1,16 @@
 select
-  *
+	"START",
+	STOP,
+	PATIENT,
+	PAYER,
+	ENCOUNTER,
+	CODE,
+	DESCRIPTION,
+	BASE_COST,
+	PAYER_COVERAGE,
+	DISPENSES,
+	TOTALCOST,
+	REASONCODE,
+	REASONDESCRIPTION
 from
   {{ source('raw_clinical', 'medications') }}

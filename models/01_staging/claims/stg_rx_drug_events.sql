@@ -1,4 +1,11 @@
 select
-  *
+  DESYNPUF_ID,
+	PDE_ID,
+	SRVC_DT,
+	PROD_SRVC_ID,
+	QTY_DSPNSD_NUM,
+	DAYS_SUPLY_NUM,
+	PTNT_PAY_AMT,
+	TOT_RX_CST_AMT
 from
   {{ source('raw_claims', 'rx_drug_events') }}
