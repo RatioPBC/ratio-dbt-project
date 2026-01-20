@@ -1,5 +1,6 @@
 [vars]
-bucket_path = "https://ratio-synthetic-claims-fmkqn8kdews2dq6eci.t3.storage.dev"
+bucket = "ratio-synthetic-claims-fmkqn8kdews2dq6eci"
+bucket_path = "https://{{ vars.bucket }}.t3.storage.dev"
 
 [env]
 DBT_PROFILES_DIR="{{ cwd }}"
