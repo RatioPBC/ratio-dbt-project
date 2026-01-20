@@ -40,8 +40,6 @@ unzip -l synthea.zip "*.csv" \
   time duckdb dev.duckdb -c "use raw_clinical; load zipfs; create table $table as select * from 'zip://synthea.zip/csv/$table.csv';"
 done
 '''
-sources = ["synthea.zip"]
-outputs = ["dev.duckdb"]
 
 [tasks."data:get:synthea"]
 description = "Downloads example data"
