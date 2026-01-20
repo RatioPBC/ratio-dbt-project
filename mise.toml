@@ -24,6 +24,15 @@ set -euo pipefail
 curl -C - -O --connect-timeout 30 --keepalive-time 60 --retry 5 --retry-delay 10 "{{ vars.bucket_path }}/dev.duckdb"
 '''
 
+[tasks."db:put"]
+description = "Puts a new version of the database into the bucket"
+run = '''
+#!/usr/bin/env bash
+
+op run -- aws s3 cp dev.duckdb "s3://{{ vars.bucket }}/dev.duckdb"
+'''
+hide = true
+
 [tasks."data:load:clinical"]
 hide = true
 description = "Load clinical CSV data into the database"
